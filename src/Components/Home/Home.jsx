@@ -36,7 +36,7 @@ const Home = () => {
                                         <div className="card-body">
                                             <h5 className="card-title">{post.title}</h5>
                                             <p className="card-text">{post.body}</p>
-                                            <Link to={`/${post.id}`} className="card-link">See detail</Link>
+                                            <Link to={`/${post.id}`} className="card-link"><button className="btn btn-primary">See detail</button></Link>
                                         </div>
                                     </div>
                                 </div>
