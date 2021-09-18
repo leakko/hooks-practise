@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom"
 import { getPosts } from '../../Services/PostsService';
+import { ThemeContext } from "../../Contexts/ThemeContext";
 import "./Home.css"
 import loadingImg from "../../Assets/loading.gif"
 
@@ -8,6 +9,8 @@ const Home = () => {
 
     const [ posts, setPosts ] = useState(null)
     const [ loading, setLoading ] = useState(true)
+
+    const { toggleTheme, darkMode } = useContext(ThemeContext);
 
     useEffect (() => {
         getPosts()
@@ -32,7 +35,7 @@ const Home = () => {
                         {posts.map((post) => {
                             return (
                                 <div className="col" key={post.id}>
-                                    <div className="card h-100">
+                                    <div className={`card h-100 ${darkMode ? "text-white bg-dark" : ""}`}>
                                         <div className="card-body">
                                             <h5 className="card-title">{post.title}</h5>
                                             <p className="card-text">{post.body}</p>
